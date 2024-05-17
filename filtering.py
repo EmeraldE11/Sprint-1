@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-df = pd.read_csv("games.csv")
+df = pd.read_csv("gamearchive\games.csv")
 names = ["Title", "Release Date", "Team", "Rating", "Times Listed", "Number of Reviews", "Genres", "Summary", "Reviews", "Plays", "Playing", "Backlogs", "Wishlist"]
 
 def main() :
@@ -87,19 +87,19 @@ def order(target) :
 
 def display(columns, sort = "no", ordering = "no") :
     try:
-        count = int(input("How many data entries do you want shown? (Enter a number between 1 and 1512.)\n"))
+        count = int(input("How many data entries do you want shown? (Enter a number between 1 and 1512.)\n(Enter 0 if you want all of the data.)\n"))
     except ValueError:
         print("That isn't a valid input. Please put a number between 1 and 13.")
         quit()
     if count == 0:
-        df = pd.read_csv("games.csv", usecols=columns)
+        df = pd.read_csv("gamearchive\games.csv", usecols=columns)
         print(f"{df}")
         quit()
     elif count < 1 or count > 1512:
         print("That isn't a valid input. Please put a number between 1 and 1512.\n(Enter 0 if you want all of the data.)\n")
         quit()
     
-    df = pd.read_csv("games.csv", usecols=columns)
+    df = pd.read_csv("gamearchive\games.csv", usecols=columns)
 
     if sort == "no" and ordering == "no":
         print(f"{df.head(count)}")
